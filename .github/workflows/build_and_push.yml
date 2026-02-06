@@ -69,21 +69,21 @@ jobs:
 
           echo "Using VERSION: $VERSION"
 
-          TAGS="freikin/dawarich:${VERSION}"
+          TAGS="khathepham/dawarich:${VERSION}"
 
           # Set platforms based on version type and release type
           PLATFORMS="linux/amd64,linux/arm64,linux/arm/v8,linux/arm/v7"
 
           # Add :rc tag for pre-releases
           if [ "${{ github.event.release.prerelease }}" = "true" ]; then
-            TAGS="${TAGS},freikin/dawarich:rc"
+            TAGS="${TAGS},khathepham/dawarich:rc"
             # For RC builds, only use amd64
             PLATFORMS="linux/amd64"
           fi
 
           # Add :latest tag only if release is not a pre-release
           if [ "${{ github.event.release.prerelease }}" != "true" ]; then
-            TAGS="${TAGS},freikin/dawarich:latest"
+            TAGS="${TAGS},khathepham/dawarich:latest"
           fi
 
           echo "Final TAGS: $TAGS"
